@@ -1,6 +1,6 @@
 # agentic-project-template
 
-A forkable repo for **one real project with a deliverable and a deadline** — a
+A forkable repo for **one real project with a deliverable and a deadline**: a
 thesis, a book, a filing, a launch, a move. It holds every piece of context the
 project has, plus a state machine an agent reads to answer "what is next", so
 closing the laptop costs nothing and reopening it costs one command.
@@ -12,7 +12,8 @@ Pattern: https://appliedai.wiki/concepts/agentic-project-management
 | Path | What it is |
 |---|---|
 | `template/` | The thing you copy. This becomes the project repo. |
-| `BOOMERANG.md` | Paste-into-any-AI interview that returns a filled `PROJECT.md` + `STATE.md`. For when the project owner is not in the room. |
+| `template/.claude/skills/interview/` | The interview as a verb. Run it in Claude Code on a fresh copy and it writes your `PROJECT.md` and `STATE.md`. |
+| `BOOMERANG.md` | The same interview as a paste-into-any-AI prompt. For no Claude Code, or when the project owner is not in the room. |
 | `run-tests.sh` | The regression suite. Six cases: five attacks that must fail, one good-faith fill that must pass. |
 
 ## Start a project
@@ -28,18 +29,22 @@ python3 check.py     # zero of everything, no dates yet. That is correct.
 Or press **Use this template** on GitHub, which gives you your own private repo
 with the history already started.
 
-Then fill `PROJECT.md` and `STATE.md` and re-run `check.py`. It will name the
-date that actually binds.
+Then **open it in Claude Code and run `interview`.** It asks you questions for
+about ten minutes and writes `PROJECT.md` and `STATE.md` for you. Re-run
+`check.py` after and it will name the date that actually binds.
 
-## Start someone ELSE'S project
+Filling those two files by hand is supported and is not the intended path. The
+blank ontology is where people stop.
 
-Send them `BOOMERANG.md`. They paste it into whatever AI they use, it interviews
-them for ten minutes, and it hands back two finished files that drop straight
+## No Claude Code, or the project is someone else's
+
+Send them `BOOMERANG.md`. They paste it into whatever AI they already use, it
+runs the same interview, and it hands back two finished files that drop straight
 into `template/`. They start populated instead of staring at `<PROJECT NAME>`.
 
-This is the right path more often than it looks. The alternative is you guessing
-at their deliverable and their deadline, and a scaffold built on a guess is worse
-than no scaffold.
+Reach for this whenever the person who can answer the questions is not the person
+at the keyboard. The alternative is you guessing at their deliverable and their
+deadline, and a scaffold built on a guess is worse than no scaffold.
 
 ## The honest part
 
@@ -69,14 +74,7 @@ tested.
 
 ## Canonical home
 
-This repo is the published home. The `start-agentic-project` skill carries a
-working copy at `~/.agents/skills/start-agentic-project/`. **They must not
-drift.** After changing either one:
-
-```bash
-diff -r ~/.agents/skills/start-agentic-project/template ./template
-```
-
-If that ever prints anything unexpected, the version stamp is the tiebreaker:
-higher `TEMPLATE_VERSION` wins, and the loser gets overwritten rather than
-merged by hand.
+**This repo is the only copy.** The `start-agentic-project` skill does not carry
+its own; it clones a pinned tag of this one. A second working copy existed for
+about a day, immediately diverged, and is why this section is here. If you find
+another, delete it rather than reconciling it.
