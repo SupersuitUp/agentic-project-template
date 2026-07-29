@@ -12,6 +12,7 @@ Pattern: https://appliedai.wiki/concepts/agentic-project-management
 | Path | What it is |
 |---|---|
 | `template/` | The thing you copy. This becomes the project repo. |
+| `SKILL.md` | The `start-agentic-project` skill: hand it to an AI and it runs the interview and stands the whole thing up for you. |
 | `template/.claude/skills/interview/` | The interview as a verb. Run it in Claude Code on a fresh copy and it writes your `PROJECT.md` and `STATE.md`. |
 | `BOOMERANG.md` | The same interview as a paste-into-any-AI prompt. For no Claude Code, or when the project owner is not in the room. |
 | `run-tests.sh` | The regression suite. Six cases: five attacks that must fail, one good-faith fill that must pass. |
@@ -74,7 +75,9 @@ tested.
 
 ## Canonical home
 
-**This repo is the only copy.** The `start-agentic-project` skill does not carry
-its own; it clones a pinned tag of this one. A second working copy existed for
-about a day, immediately diverged, and is why this section is here. If you find
-another, delete it rather than reconciling it.
+**This repo is the only copy of all of it**, including `SKILL.md`. Anything
+elsewhere (an installed skill under `~/.agents`, a file served by a wiki) is a
+deployment of this, not a peer, and is overwritten from here rather than merged.
+
+Two copies existed for about one day and diverged inside that day, which is the
+entire reason this section exists. If you find another, delete it.
