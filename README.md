@@ -18,12 +18,15 @@ Pattern: https://appliedai.wiki/concepts/agentic-project-management
 ## Start a project
 
 ```bash
-# NOT YET PUSHED TO A REMOTE. Local only, as of 2026-07-29.
-cp -R <this-repo>/template ~/projects/<project-slug>
+git clone https://github.com/SupersuitUp/agentic-project-template.git
+cp -R agentic-project-template/template ~/projects/<project-slug>
 cd ~/projects/<project-slug>
 git init && git add -A && git commit -m "init: <project> as an agentic project"
 python3 check.py     # zero of everything, no dates yet. That is correct.
 ```
+
+Or press **Use this template** on GitHub, which gives you your own private repo
+with the history already started.
 
 Then fill `PROJECT.md` and `STATE.md` and re-run `check.py`. It will name the
 date that actually binds.
