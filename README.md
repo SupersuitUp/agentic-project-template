@@ -12,12 +12,23 @@ Pattern: https://appliedai.wiki/concepts/agentic-project-management
 | Path | What it is |
 |---|---|
 | `template/` | The thing you copy. This becomes the project repo. |
-| `SKILL.md` | The `start-agentic-project` skill: hand it to an AI and it runs the interview and stands the whole thing up for you. |
 | `template/.claude/skills/interview/` | The interview as a verb. Run it in Claude Code on a fresh copy and it writes your `PROJECT.md` and `STATE.md`. |
 | `BOOMERANG.md` | The same interview as a paste-into-any-AI prompt. For no Claude Code, or when the project owner is not in the room. |
 | `run-tests.sh` | The regression suite. Six cases: five attacks that must fail, one good-faith fill that must pass. |
 
 ## Start a project
+
+**The intended path is to not do this by hand.** Give an agent the generator and
+answer its questions for ten minutes:
+
+```
+https://www.appliedai.wiki/generators/start-agentic-project/GENERATE.md
+```
+
+It interviews you, clones this repo, writes `PROJECT.md` and `STATE.md` from your
+answers, runs `check.py` until it passes, and proves the project resumes cold.
+
+By hand, if you would rather:
 
 ```bash
 git clone https://github.com/SupersuitUp/agentic-project-template.git
@@ -75,9 +86,16 @@ tested.
 
 ## Canonical home
 
-**This repo is the only copy of all of it**, including `SKILL.md`. Anything
-elsewhere (an installed skill under `~/.agents`, a file served by a wiki) is a
-deployment of this, not a peer, and is overwritten from here rather than merged.
+**This repo owns the payload**: the template, the boomerang and the tests. Any
+copy of those elsewhere is a deployment, overwritten from here rather than merged.
+
+**It does not own the recipe.** Standing a project up is a one-time scaffold, so
+it is a GENERATE rather than a skill, and it is hosted at
+https://www.appliedai.wiki/generators/start-agentic-project/GENERATE.md
+(source: `appliedai-wiki/static/generators/start-agentic-project/`). That
+generator clones a pinned tag of this repo. Recipe and payload version
+separately on purpose: fixing a question in the interview should not require
+cutting a template release.
 
 Two copies existed for about one day and diverged inside that day, which is the
 entire reason this section exists. If you find another, delete it.
